@@ -3,7 +3,7 @@ package laboratorioGestionDeMensajes;
 import java.util.Scanner;
 
 public class GestorMensaje {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         Mensaje mensaje1 = null;
@@ -36,9 +36,9 @@ public class GestorMensaje {
             Mensaje nuevoMensaje = new Mensaje(autor, contenido);
 
             //4. ASIGNACIÓN A LA VARIABLE CORRESPONDIENTE SEGÚN LA ITERACIÓN
-            if (i == 1) {
+            if (i == 0) {
                 mensaje1 = nuevoMensaje;
-            } else if (i == 2) {
+            } else if (i == 1) {
                 mensaje2 = nuevoMensaje;
             }else{
                 mensaje3 = nuevoMensaje;
@@ -73,19 +73,143 @@ public class GestorMensaje {
 
             switch (opcion){
                 case 1:
-                    // TODO: Opción 1
+                    System.out.println("Has elegido la opción 1.");
+                    System.out.println(mensaje1.mostrar());
+                    System.out.println(mensaje2.mostrar());
+                    System.out.println(mensaje3.mostrar());
                     break;
                 case 2:
-                    // TODO: Opción 2
+                    System.out.println("Has elegido la opción 2.");
+                    Mensaje mayor = mensaje1;
+                    String nombreMensajeMasLargo = mensaje1.getAutor();
+                    if(mensaje2.getLongitud() > mayor.getLongitud()){
+                        mayor = mensaje2;
+                    }
+                    if(mensaje3.getLongitud() > mayor.getLongitud()){
+                        mayor = mensaje3;
+                    }
+                    System.out.println("El mensaje más largo es el de " +mayor.getAutor() + ":");
+                    System.out.println("\""+mayor.getContenido()+"\"");
+                    System.out.println("Longitud sin espacios: "+mayor.getLongitud());
+                    System.out.println("Palabras: "+mayor.getPalabras());
+
                     break;
                 case 3:
-                    // TODO: Opción 3
+                    System.out.println("Has elegido la opción 3.");
+                    System.out.println("Selecciona el número del mensaje (1-3):");
+                    int value = Integer.parseInt(scanner.nextLine());
+
+                    //1. ASIGNAR EL MENSAJE SELECCIONADO
+                    Mensaje mensajeSeleccionado = null;
+                    if(value == 1){
+                        mensajeSeleccionado = mensaje1;
+                    }else if(value == 2){
+                        mensajeSeleccionado = mensaje2;
+                    }else if(value == 3){
+                        mensajeSeleccionado = mensaje3;
+                    }else{
+                        System.out.println("Número de mensaje inválido.");
+                        break;
+                    }
+
+                    //2. PEDIR Y VALIDAR LA LETRA
+                    System.out.println("Introduce la letra a buscar: ");
+                    String letra = scanner.nextLine();
+                    while(letra.trim().isEmpty()){
+                        System.out.println("Entrada vacía. Introduce una letra: ");
+                        letra = scanner.nextLine();
+                    }
+                    //PASAMOS LA LETRA BUSCADA A MINÚSCULA PARA IGNORAR DIFERENCIAS
+                    char letraBuscada = Character.toLowerCase(letra.charAt(0));
+
+                    //3. RECORRER EL CONTENIDO CON CONTINUE
+                    String texto = mensajeSeleccionado.getContenido();
+                    int contadorOcurrencias = 0;
+                    for (int i = 0; i < texto.length(); i++) {
+                        char caracterActual = texto.charAt(i);
+
+                        //USAR CONTINUE PARA SALTAR ESPACIOS
+                        if(caracterActual == ' '){
+                            continue;
+                        }
+
+                        //COMPARAR CONVIRTIENDO A MINÚSCULA
+                        if(Character.toLowerCase(caracterActual) == letraBuscada){
+                            contadorOcurrencias++;
+                        }
+                    }
+
+                    //4. SALIDA ESPERADA
+                    System.out.println("La letra '"+letra.charAt(0)+"' aparece "+contadorOcurrencias+ " veces en este mensaje.");
                     break;
                 case 4:
-                    // TODO: Opción 4
+                    System.out.println("Has elegido la opción 4.");
+                    System.out.println("Elige el mensaje a invertir (1-3):");
+                    int opcion2 = Integer.parseInt(scanner.nextLine());
+
+                    String original ="";
+                    if(opcion2==1){
+                        original = mensaje1.getContenido();
+                    } else if (opcion2==2) {
+                        original = mensaje2.getContenido();
+                    }else if (opcion2 == 3){
+                        original = mensaje3.getContenido();
+                    }else{
+                        System.out.println("Opción de mensaje inválido.");
+                        break;
+                    }
+                    System.out.println("El contenido original es: "+original);
+                    String invertida ="";
+                    for(int i= original.length() - 1;i>=0;i--){
+                        invertida +=original.charAt(i);
+                    }
+                    System.out.println("Cadena invertida: "+invertida);
                     break;
                 case 5:
-                    // TODO: Opción 5
+                    System.out.println("Has elegido la opción 5.");
+                    System.out.println("Selecciona el mensaje (1-3): ");
+                    int option = Integer.parseInt(scanner.nextLine());
+
+                    //VALIDAMOS EL VALOR INGRESADO POR EL USUARIO.
+                    while(option < 1 || option > 3){
+                        System.out.println("Opcion no valida. Debes elegir un valor entre 1 y 3.");
+                        System.out.println("Intenta nuevamente: ");
+                        option = Integer.parseInt(scanner.nextLine());
+                    }
+
+                    //GUARDAR Y MOSTRAR EL CONTENIDO ORIGINAL.
+                    String textoOriginal ="";
+                    if(option==1){
+                        textoOriginal = mensaje1.getContenido();
+                    } else if (option==2) {
+                        textoOriginal = mensaje2.getContenido();
+                    }else{
+                        textoOriginal = mensaje3.getContenido();
+                    }
+
+                    System.out.println("Contenigo original: "+textoOriginal);
+                    //TRANSFORMACIÓN A TÍTULO CAPITALIZADO.
+                    boolean capitalizarSiguiente = true;
+                    String resultado = "";
+
+                    for(int i= 0;i<textoOriginal.length();i++){
+                        char c = textoOriginal.charAt(i);
+
+                        if(c == ' '){
+                            resultado += c;
+                            capitalizarSiguiente = true;
+                        }else{
+                            if(capitalizarSiguiente){
+                                resultado +=Character.toUpperCase(c);
+                                capitalizarSiguiente = false;
+                            }else{
+                                resultado +=Character.toLowerCase(c);
+                            }
+                        }
+                    }
+
+                    System.out.println("Versión en Titulo Capitalizado:");
+                    System.out.println(resultado);
                     break;
                 case 6:
                     System.out.println("Saliendo del programa...");
