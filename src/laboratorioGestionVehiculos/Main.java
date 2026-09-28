@@ -11,21 +11,28 @@ public class Main {
 
         //3.2 USO DE SETTERS & GETTERS
         //GETTERS
+        System.out.println("Marca del primer coche creado: ");
         System.out.println(coche.getMarca());
+        System.out.println("Velocuidad del primer coche creado.");
         System.out.println(coche.getVelocidadMaxima());
 
         //SETTERS
+        System.out.println("\nNueva velocidad del coche primer creado (SET)");
         coche.setVelocidadMaxima(10);
         System.out.println(coche.getVelocidadMaxima());
 
         //3.3.1 MOSTRAR DATOS
-        System.out.println("\n"+v.mostrar());
-        System.out.println("\n"+v2.mostrar());
+        System.out.println("\nDatos completos del primer VEHICULO creado.");
+        System.out.println(v.mostrar());
+        System.out.println("\nDatos completos del segundo VEHICULO creado.");
+
+        System.out.println(v2.mostrar());
 
         coche.mostrar();
         moto.mostrar();
 
         //3.3.2 ARRANCA
+        System.out.println("\nArrancar coches:");
         v.arrancar();
         coche.arrancar("llave");
         moto.arrancar(true);
