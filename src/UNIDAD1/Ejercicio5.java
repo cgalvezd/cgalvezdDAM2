@@ -20,7 +20,6 @@ public class Ejercicio5 {
             System.out.println("Error: La ruta específica es un directorio.");
             return;
         }
-
     }
 
     static void main() {
@@ -32,6 +31,9 @@ public class Ejercicio5 {
         agregarTexto(archivo);
         System.out.println("Ingresa el texto que quieres añadir al final del archivo. ");
         String texto = scanner.nextLine();
+
+        //El file de abajo fue anotado para que compile, se debe modificar.
+        File file = new File("HOLA");
 
         try(FileWriter fileWriter = new FileWriter(file, true);
         PrintWriter printWriter = new PrintWriter(fileWriter)){

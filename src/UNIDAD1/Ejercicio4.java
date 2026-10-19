@@ -79,8 +79,11 @@ public class Ejercicio4 {
         File ficheroALeer = new File(rutaCarpeta, nombreIntroducido);
 
         //3. VALIDAR SI EL FICHERO INTRODUCIDO EXISTE.
-        if(!ficheroALeer.exists() || ficheroALeer.isDirectory() || nombreIntroducido.isEmpty()){
-            System.out.println("\n[!] El fichero '"+nombreIntroducido + "' no se encuentra");
+        if(!ficheroALeer.exists() || ficheroALeer.isDirectory() || nombreIntroducido.isEmpty()) {
+            System.out.println("\n[!] El fichero '" + nombreIntroducido + "' no se encuentra");
+        }
+        if(ficheroALeer.exists()){
+
             System.out.println("[->] Fichero disponible: "+fichero.getAbsolutePath());
             //REDIRIGIR EL FLUJO PARA LEER EL ARCHIVO CORRECTO AUTOMÁTICAMENTE
             ficheroALeer = fichero;
