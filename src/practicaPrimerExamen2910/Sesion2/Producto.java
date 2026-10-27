@@ -29,7 +29,7 @@ public class Producto {
         return new Producto(
                 Integer.parseInt(c[0].trim()),
                 c[1].trim(),
-                Double.parseDouble(c[2].trim().replace(',', ',')),
+                Double.parseDouble(c[2].trim().replace(',', '.')),
                 Integer.parseInt(c[3].trim()));
     }
 
