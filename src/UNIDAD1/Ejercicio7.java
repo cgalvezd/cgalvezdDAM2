@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Ejercicio7 {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         Path rutaFichero = Paths.get("datos.txt");
         File ficheroOriginal = rutaFichero.toFile();
 
@@ -57,6 +57,7 @@ public class Ejercicio7 {
                 String lineaActual;
                 int contadorLineas = 1;
                 boolean lineaModificada = false;
+                //ESTO FUE HECHO CONH IA
 
                 // Leemos línea por línea el archivo original
                 while ((lineaActual = lector.readLine()) != null) {
