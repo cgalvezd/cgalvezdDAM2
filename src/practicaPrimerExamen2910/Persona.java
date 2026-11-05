@@ -24,7 +24,7 @@ public class Persona {
 
         //Leer
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("p.dat"))){
-            List<Persona> listaOis = (List<Persona>) ois.readObject();
+         //   List<Persona> listaOis = (List<Persona>) ois.readObject();
         }catch (IOException e){
             System.err.println("ERROR DE E/S: "+e.getMessage());
         }
