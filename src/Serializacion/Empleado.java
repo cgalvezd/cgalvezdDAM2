@@ -1,6 +1,5 @@
 package Serializacion;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,15 +22,12 @@ public class Empleado implements Serializable {
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public double getSueldo() {
         return sueldo;
     }
-
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }
@@ -145,6 +141,7 @@ public class Empleado implements Serializable {
             if(e.getNombre().equalsIgnoreCase(nombreBuscar)){
                 iterator.remove();
                 encontrado = true;
+                System.out.println("Empleado "+e.getNombre()+ " borrado correctamente.");
             }
         }
         if(!encontrado){
@@ -161,18 +158,17 @@ public class Empleado implements Serializable {
         System.out.println("¿Cuanto es el sueldo que vas a incrementar?");
         Double incrementoSueldo = Double.parseDouble(scanner.nextLine());
 
-        for (Empleado e : listaEmpleados){
-            double nuevoSueldo = e.getSueldo();
-            nuevoSueldo+= incrementoSueldo;
-            e.setSueldo(nuevoSueldo);
+        Iterator<Empleado> it = listaEmpleados.iterator();
+        while(it.hasNext()){
+            Empleado e = it.next();
+            e.setSueldo(e.getSueldo()+incrementoSueldo);
         }
-
+        System.out.println("Subida aplicada correctamente.");
         guardarFichero(listaEmpleados);
     }
 
     static void main() {
         listaEmpleados = leerFichero();
-
         leerMenu();
     }
 }

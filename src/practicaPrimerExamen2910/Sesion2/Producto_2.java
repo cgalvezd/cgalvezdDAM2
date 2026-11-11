@@ -1,5 +1,7 @@
 package practicaPrimerExamen2910.Sesion2;
 
+import primerExamenAccesoA_Datos.resolExamen;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

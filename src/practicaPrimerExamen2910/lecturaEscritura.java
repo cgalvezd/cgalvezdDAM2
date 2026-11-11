@@ -17,7 +17,8 @@ public class lecturaEscritura {
         }
 
         //ESCRIBIR
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("datos.txt", StandardCharsets.UTF_8, true)
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("datos.txt",
+                StandardCharsets.UTF_8, true)
         )){
             bw.write("Nueva línea");
             bw.newLine();

@@ -1,3 +1,5 @@
+package practicaPrimerExamen2910.Sesion2;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,7 +7,7 @@ import java.util.Scanner;
 
 public class Ejercicio4 {
 
-    // Clase interna para gestionar los productos fácilmente
+    // Clase interna estática para gestionar los productos fácilmente
     static class Producto {
         int id;
         String nombre;
@@ -25,7 +27,7 @@ public class Ejercicio4 {
         }
     }
 
-    public static void main(String[] args) {
+    static void main() {
         String ruta = "productos.csv";
         Scanner sc = new Scanner(System.in);
 
